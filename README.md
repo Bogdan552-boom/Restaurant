@@ -1,2 +1,0 @@
-# Restaurant
-My restaurant
