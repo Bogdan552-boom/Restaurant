@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформлення замовлення</title>
+</head>
+<body>
+    <h2>Ваше замовлення</h2>
+    {%if basket%}
+        <ul>
+            {%for position in basket%}
+                <li>{{position}} , к-сть: {{basket[position]}}</li>
+            {%endfor%}
+        </ul>
+        <form method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <input type="submit" value="Оформити замволення">
+        </form>
+    {%else%}
+        <h1>Ваш кошик порожній</h1>
+    {%endif%}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert">{{ messages[0] }}</div>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
